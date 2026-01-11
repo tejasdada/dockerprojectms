@@ -1,18 +1,26 @@
----
-version: "3"
+version: '3.8'
 services:
-  train:
-    image: rahamshaik/paytmmstrain:latest
-    ports:
-      - 80:80
-    replicas: 3
-  dth:
-    image: rahamshaik/paytmmsdth:latest
-    ports:
-      - 81:80
-    replicas: 3
   movies:
-    image: rahamshaik/paytmmsmovies:latest
+    image: 199296/paymovies:latest
     ports:
-      - 82:80
-    replicas: 3
+      - "81:80"
+    deploy:
+      replicas: 3
+  train:
+    image: 199296/paytrain:latest
+    ports:
+      - "82:80"
+    deploy:
+      replicas: 3
+  dth:
+    image: 199296/paydth:latest
+    ports:
+      - "83:80"
+    deploy:
+      replicas: 3
+  recharge:
+    image: 199296/payrecharge:latest
+    ports:
+      - "84:80"
+    deploy:
+      replicas: 3
